@@ -24,7 +24,7 @@ const initialState: Preference = {
     fullName: 'default',
     dat: 'default',
     docLink: 'default',
-    model: 'openai_text-embedding-ada-002',
+    model: 'huggingface_sentence-transformers/all-mpnet-base-v2', //openai_text-embedding-ada-002
   } as Doc,
   sourceDocs: null,
   conversations: null,

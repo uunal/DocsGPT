@@ -64,7 +64,7 @@ export default function Navigation({ navOpen, setNavOpen }: NavigationProps) {
   const navRef = useRef(null);
   const apiHost = import.meta.env.VITE_API_HOST || 'https://docsapi.arc53.com';
   const embeddingsName =
-    import.meta.env.VITE_EMBEDDINGS_NAME || 'openai_text-embedding-ada-002';
+    import.meta.env.VITE_EMBEDDINGS_NAME || 'huggingface_sentence-transformers/all-mpnet-base-v2'; //'openai_text-embedding-ada-002'
 
   const navigate = useNavigate();
 
