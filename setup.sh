@@ -29,12 +29,13 @@ download_locally() {
         echo "Model already exists."
     fi
    
-    docker-compose -f docker-compose-local.yaml build && docker-compose -f docker-compose-local.yaml up -d
-    #python -m venv venv
-    #source venv/bin/activate
-    #pip install -r application/requirements.txt
-    #pip install llama-cpp-python
-    #pip install sentence-transformers
+    docker compose -f docker-compose-local.yaml build && docker compose -f docker-compose-local.yaml up -d
+    
+    # conda create --name docgpt-app python=3.9 --no-default-packages 
+    # conda activate docgpt-app
+    # pip install -r application/requirements.txt
+    # pip install llama-cpp-python
+    
     export LLM_NAME=llama.cpp
     export EMBEDDINGS_NAME=huggingface_sentence-transformers/all-mpnet-base-v2
     export FLASK_APP=application/app.py
@@ -45,7 +46,7 @@ download_locally() {
     echo "You can stop the application by running the following command:"
     echo "Ctrl + C and then"
     echo "Then pkill -f 'flask run' and then"
-    echo "docker-compose down"
+    echo "docker compose down"    
     flask run --host=0.0.0.0 --port=7091 &
     celery -A application.app.celery worker -l INFO
 }
@@ -58,13 +59,13 @@ use_openai() {
     echo "VITE_API_STREAMING=true" >> .env
     echo "The .env file has been created with API_KEY set to your provided key."
 
-    docker-compose build && docker-compose up -d
+    docker compose build && docker compose up -d
 
 
 
     echo "The application will run on http://localhost:5173"
     echo "You can stop the application by running the following command:"
-    echo "docker-compose down"
+    echo "docker compose down"
 }
 
 # Prompt the user for their choice

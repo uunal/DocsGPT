@@ -2,9 +2,10 @@ from application.llm.base import BaseLLM
 
 class HuggingFaceLLM(BaseLLM):
 
-    def __init__(self, api_key, llm_name='Arc53/DocsGPT-7B',q=False):
+    def __init__(self, api_key, llm_name='stas/tiny-random-llama-2',q=False):
         global hf
         
+        # Arc53/DocsGPT-7B
         from langchain.llms import HuggingFacePipeline
         if q:
             import torch
